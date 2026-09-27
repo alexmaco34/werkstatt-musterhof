@@ -1,0 +1,127 @@
+/* ---------- 1. Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+img { display: block; max-width: 100%; }
+
+/* ---------- 2. Tokens ---------- */
+:root {
+  --rot: #6E3636;
+  --rot-tief: #3D1E1E;
+  --wand: #EDEAE4;
+  --karte: #FFFFFF;
+  --anthrazit: #2E2E30;
+  --grau: #6E6E6A;
+  --gelb: #F0C33C;
+  --breite: 1080px;
+  --luft: 5rem;
+  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --text: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- 3. Basis ---------- */
+body { font-family: var(--text); font-size: 1.0625rem; line-height: 1.65;
+       color: var(--anthrazit); background: var(--wand); }
+h1, h2 { font-family: var(--display); font-weight: 700; line-height: 1.05;
+         text-transform: uppercase; }
+h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; margin-bottom: .4rem; }
+p + p { margin-top: 1rem; }
+a { color: var(--rot); }
+a:focus-visible { outline: 3px solid var(--gelb); outline-offset: 3px; }
+
+/* ---------- 4. Layout ---------- */
+
+header, section, footer { padding: var(--luft) 1.5rem; }
+header > *, section > *, footer > * { max-width: var(--breite); margin-inline: auto; }
+
+/* ---------- 5. Hero ---------- */
+header { background: var(--rot); color: var(--wand); padding: 3rem 1.5rem 3.5rem; }
+.hero-text p:first-of-type { font-family: var(--display); text-transform: uppercase;
+  letter-spacing: .08em; font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gelb); margin-top: .75rem; }
+.hero-text p:last-of-type { max-width: 46ch; margin-top: 1rem; }
+.hero-buttons, .kontakt-buttons { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+.hero-bild { margin-top: 3.5rem; aspect-ratio: 16/9; overflow: hidden; }
+
+.karo { height: 10px; background-color: var(--wand);
+  background-image:
+    linear-gradient(45deg, var(--rot) 25%, transparent 25%, transparent 75%, var(--rot) 75%),
+    linear-gradient(45deg, var(--rot) 25%, transparent 25%, transparent 75%, var(--rot) 75%);
+  background-size: 10px 10px; background-position: 0 0, 5px 5px; }
+
+/* ---------- 6. Buttons ---------- */
+.btn { display: inline-block; padding: 1rem 1.9rem; font-family: var(--display);
+  font-size: 1.15rem; text-transform: uppercase; letter-spacing: .05em;
+  text-decoration: none; background: var(--gelb); color: var(--anthrazit);
+  border: 2px solid var(--gelb); }
+.btn:hover { background: #fff; border-color: var(--gelb); }
+.btn-secondary { background: transparent; color: var(--wand); border-color: var(--wand); }
+.btn-secondary:hover { background: var(--wand); color: var(--anthrazit); border-color: var(--wand); }
+#kontakt .btn-secondary { color: var(--rot); border-color: var(--rot); }
+#kontakt .btn-secondary:hover { background: var(--rot); color: #fff; border-color: var(--rot); }
+.btn { transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
+
+/* ---------- 7. Vertrauensleiste ---------- */
+.vertrauen { list-style: none; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: .75rem 2.5rem; background: var(--anthrazit); color: var(--wand);
+  padding: 1.1rem 1.5rem; font-family: var(--display); text-transform: uppercase;
+  letter-spacing: .06em; font-size: 1.1rem; }
+
+/* ---------- 8. Sections ---------- */
+
+main h2 { position: relative; padding-top: 1.25rem; }
+main h2::before { content: ""; position: absolute; top: 0; left: 0;
+    width: 56px; height: 4px; background: var(--gelb); }
+#hu-au { background: var(--rot); color: var(--wand); }
+#ueber-uns, #kontakt { background: var(--karte); }
+
+/* ---------- 9. Grids ---------- */
+.leistungen-grid, .einblicke-grid, .bewertungen-grid {
+  display: grid; gap: 1.25rem; margin-top: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.ueber-uns-layout { display: grid; gap: 2.5rem; margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.leistung { background: var(--karte); padding: 1.5rem 1.4rem; border-top: 3px solid var(--rot); }
+.leistung p { font-size: .95rem; color: var(--grau); }
+
+.bild { aspect-ratio: 4/3; overflow: hidden; background: var(--rot-tief); }
+.bild img, .hero-bild img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bild img { object-position: center 40%; }
+
+.bewertung-summe { display: flex; align-items: baseline; gap: .6rem;
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .05em;
+  font-size: 1.15rem; color: var(--rot); }
+.bewertung-summe span { font-size: 3rem; line-height: 1; letter-spacing: 0; }
+.bewertung { background: var(--karte); padding: 1.5rem; border-left: 3px solid var(--gelb); }
+
+/* ---------- 10. Kontakt + Footer ---------- */
+address { font-style: normal; margin: 1.5rem 0; }
+#kontakt table { border-collapse: collapse; margin-top: .5rem; }
+#kontakt th, #kontakt td { text-align: left; padding: .45rem 1.5rem .45rem 0;
+  border-bottom: 1px solid #E3E0D9; }
+.kontakt-buttons { display: flex; flex-wrap: wrap; gap: 1rem;
+  align-items: flex-start; margin-top: 2.5rem; }
+
+.route { margin-top: 1.75rem; }
+
+.kontakt-layout { display: grid; gap: 2.5rem; margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.kontakt-layout address { margin-top: 0; }
+footer { background: var(--anthrazit); color: var(--wand); text-align: center;
+  font-size: .875rem; padding: 2.5rem 1.5rem; }
+
+/* ---------- 11. Demo-Ergänzungen ---------- */
+/* Platzhalter statt Fotos: bei einem echten Kunden durch <img> ersetzen */
+.platzhalter {
+  background:
+    repeating-linear-gradient(135deg, rgba(240,195,60,.10) 0 18px, transparent 18px 36px),
+    radial-gradient(circle at 30% 35%, rgba(237,234,228,.18), transparent 60%),
+    var(--rot-tief);
+}
+.bewertung-hinweis { color: var(--grau); }
+/* Buttons in einer Reihe gleich breit; auf dem Handy untereinander in voller Breite */
+.hero-buttons .btn, .kontakt-buttons .btn { flex: 1 1 16rem; max-width: 22rem; text-align: center; }
+/* Lange Wörter im Titel passen auch auf schmale Handys */
+h1 { font-size: clamp(2rem, 9vw, 4.5rem); overflow-wrap: break-word; hyphens: auto; }
